@@ -1,0 +1,49 @@
+CREATE TABLE PATIENT_MASTER_TEAM2(PATIENT_ID NUMBER(10) PRIMARY KEY,PATIENT_NAME VARCHAR2(30),BLOOD_GROUP VARCHAR2(3),DATE_OF_FIRST_VISIT DATE,AGE NUMBER(3),GENDER CHAR(1),SENIOR_CITIZEN CHAR(1),CREATION_DATE DATE,CREATED_BY NUMBER(15),LAST_UPDATE_DATE DATE,LAST_UPDATED_BY NUMBER(15),LAST_UPDATE_LOGIN NUMBER(15));
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE CONTACT_DETAILS_TEAM2(PATIENT_ID NUMBER(10), MOBILE VARCHAR2(15), HOME VARCHAR2(15), ADDRESS VARCHAR2(50), CITY_PIN VARCHAR2(20),FOREIGN KEY(PATIENT_ID) REFERENCES PATIENT_MASTER_TEAM2(PATIENT_ID) );
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE PATIENT_HISTORY_TEAM2(BILL_NUMBER NUMBER(10) PRIMARY KEY,PATIENT_ID NUMBER(10),STATUS_CODE VARCHAR2(1),ATTENDER_NAME VARCHAR2(30),VISIT_NUMBER NUMBER(4),SYMPTOM_ISSUE VARCHAR2(50),CONSULTED_DR VARCHAR2(30),DIAGNOSIS VARCHAR2(50),ADMITTED_DATE DATE,DISCHARGED_DATE DATE,BILL_AMOUNT NUMBER(9,2),CREATION_DATE DATE,CREATED_BY NUMBER(15),LAST_UPDATE_DATE DATE,LAST_UPDATED_BY NUMBER(15),LAST_UPDATE_LOGIN NUMBER(15), FOREIGN KEY(PATIENT_ID) REFERENCES PATIENT_MASTER_TEAM2(PATIENT_ID) );
+
+==============================================================================
+GRANT ALL ON PATIENT_MASTER_TEAM2 TO apps;
+
+GRANT ALL ON CONTACT_DETAILS_TEAM2 TO apps;
+
+GRANT ALL ON PATIENT_HISTORY_TEAM2 TO apps;
+==============================================================================
+CREATE SYNONYM PATIENT_HISTORY_TEAM2  FOR hr.PATIENT_HISTORY_TEAM2;
+
+CREATE SYNONYM PATIENT_MASTER_TEAM2  FOR hr.PATIENT_MASTER_TEAM2;
+
+CREATE SYNONYM CONTACT_DETAILS_TEAM2  FOR hr.CONTACT_DETAILS_TEAM2;
+==============================================================================
+form file name:
+TEAM2HM.fmb
+==============================================================================
+CREATE SEQUENCE PATIENT_ID_TE2 ;
+CREATE SEQUENCE BILL_SEQ_2 START WITH 100;
+==============================================================================
+oracle apps
+application user:INTN2022FEB21TEAM2
+password:654321
+form name:TEAM2HM
+fuction name:TEAM2_HM_F1
+SUB MENU:SUB_MENU_TEAM2
+PARENT MENU:PARENT_MENU_TEAM2
+RESPONSIBILITY NAME:RESPONSIBILITY_TEAM2
+Request Group:RG_TEAM2
+-------------------------------------------------------------------------------
+Registering form :R _TEAM_2
+concurret Program for Procedure:CP_TEAM2_PRO
+Value set:ACTION_T2
+---------------------------------------------------------------------------------
+
+Registering report:REG_TEAM2
+concurret Program for report:CP_TEAM2
+
+
+
+
